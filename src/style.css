@@ -1,0 +1,98 @@
+:root {
+  --cgi-red: #e31937;
+  --cgi-red-dark: #b3122a;
+  --cgi-purple: #5a2d81;
+  --cgi-purple-dark: #43205f;
+  --cgi-black: #1a1a1a;
+  --cgi-white: #ffffff;
+  --cgi-grey: #757575;
+  --cgi-grey-dark: #4a4a4a;
+  --cgi-grey-light: #d9d9d9;
+  --cgi-grey-pale: #f4f4f5;
+
+  --bg: var(--cgi-white);
+  --surface: var(--cgi-grey-pale);
+  --text: var(--cgi-black);
+
+  color-scheme: light dark;
+  font: 15px/1.5 system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141414;
+    --surface: #202022;
+    --text: #f2f2f2;
+    --cgi-grey-light: #3a3a3c;
+    --cgi-grey-pale: #202022;
+    --cgi-grey-dark: #c9c9c9;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn__icon {
+  font-weight: 700;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--cgi-grey-light);
+  color: var(--cgi-grey-dark);
+}
+
+.btn--ghost:hover {
+  border-color: var(--cgi-purple);
+  color: var(--cgi-purple);
+}
+
+.btn--red {
+  background: var(--cgi-red);
+  color: var(--cgi-white);
+}
+
+.btn--red:hover {
+  background: var(--cgi-red-dark);
+}
+
+.btn--purple {
+  background: var(--cgi-purple);
+  color: var(--cgi-white);
+}
+
+.btn--purple:hover {
+  background: var(--cgi-purple-dark);
+}

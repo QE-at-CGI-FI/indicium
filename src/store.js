@@ -1,6 +1,6 @@
 import { reactive, watch } from 'vue'
 
-export { requirementsForLevel } from './levelRequirements.js'
+export { requirementsForLevel, HAMEL_INTRO } from './levelRequirements.js'
 
 const STORAGE_KEY = 'indicium-data'
 

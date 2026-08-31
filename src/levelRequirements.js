@@ -5,11 +5,32 @@
 // A dimension item is either a plain string (a bullet) or
 // { sub: 'heading', items: ['bullet', ...] } for the conditional blocks
 // ("If responsible for a team" / "If individual contributor").
+//
+// Each level also carries a `hamel` characterization: Gary Hamel's hierarchy
+// of human contribution (obedience -> diligence -> expertise -> initiative ->
+// creativity -> passion). Hamel's argument is that competitive advantage comes
+// only from the top three rungs, which people give by choice rather than on
+// command. Every CGI level assumes all six; what changes is the rung where the
+// level is actually earned, and the scope it plays out on.
+
+export const HAMEL_INTRO =
+  'Gary Hamel ranks contribution as obedience, diligence, expertise, initiative, creativity and passion, and argues advantage comes only from the top three — the ones people give by choice. Every career level assumes all six; what shifts is the rung where the level is actually earned and the scope it plays out on.'
 
 export const LEVEL_REQUIREMENTS = {
   4: {
     jobCode: 'Consultant',
     jobCodeNote: 'Consulting is part of the role',
+    summary:
+      'Completes assigned tasks under detailed guidance, building efficiency and quality in their own work while learning the role.',
+    hamel: {
+      band: 'Obedience & diligence (expertise forming)',
+      gist: "The pyramid's bottom rungs are the explicit ask; the level is earned by dependable execution, self-awareness, and fast learning rather than by initiative.",
+      examples: [
+        'Keeps commitments visible and flags a slip early instead of hoping to recover it.',
+        'Asks a clarifying question rather than guessing, then delivers work that needs little rework.',
+        'Picks up a new tool or method as soon as the assignment calls for it.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -55,6 +76,17 @@ export const LEVEL_REQUIREMENTS = {
   5: {
     jobCode: 'Consultant',
     jobCodeNote: 'Consulting is part of the role',
+    summary:
+      'Works on problems of moderate scope within defined procedures, developing professional expertise and planning their own work over shorter periods.',
+    hamel: {
+      band: 'Diligence & expertise',
+      gist: 'Reliability is assumed; the level is about owning a body of professional method and steering your own short-term work through it.',
+      examples: [
+        'Chooses an appropriate method for the task without being told which one.',
+        'Absorbs a change of plan and re-sequences own work without drama.',
+        'Keeps a lightweight plan and tracks delivery against it.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -95,6 +127,17 @@ export const LEVEL_REQUIREMENTS = {
   6: {
     jobCode: 'Consultant',
     jobCodeNote: 'Consulting is part of the role',
+    summary:
+      'Works independently within established methods on their own assignment, beginning to influence team practices and identify improvement opportunities.',
+    hamel: {
+      band: 'Expertise, first sparks of initiative',
+      gist: "Full working competence is the baseline; the distinguishing behaviour is unprompted improvement within your own assignment — the first rung Hamel counts as a real advantage.",
+      examples: [
+        'Proposes a productivity, margin, or quality improvement nobody asked for.',
+        'Spots and names a risk before it lands.',
+        'Coaches a peer on a technique without being assigned to.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -136,6 +179,17 @@ export const LEVEL_REQUIREMENTS = {
   7: {
     jobCode: 'Senior Consultant',
     jobCodeNote: 'Focus beyond own assignment',
+    summary:
+      'A recognized contributor who improves whole-team and project performance, collaborating and networking beyond their own assignment to turn analysis into recommendations with trade-offs.',
+    hamel: {
+      band: 'Initiative (expertise now taken as read)',
+      gist: 'Expertise is assumed and recognized; the level is earned by acting beyond your own assignment without being directed to.',
+      examples: [
+        'Reaches into another function or the client to pressure-test an approach no one asked them to check.',
+        'Turns raw analysis into a recommendation with trade-offs and risks made explicit.',
+        'Offers help or advice to others before being approached.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -182,6 +236,17 @@ export const LEVEL_REQUIREMENTS = {
   8: {
     jobCode: 'Senior Consultant',
     jobCodeNote: 'Focus beyond own assignment',
+    summary:
+      'Leads complex, ambiguous engagements, adapts methods and criteria, coordinates and influences across teams, and actively mentors others.',
+    hamel: {
+      band: 'Initiative & creativity',
+      gist: 'Initiative is expected; the edge is adapting the method itself and making sense of messy, incomplete situations.',
+      examples: [
+        "Combines or reshapes standard methods when the off-the-shelf one doesn't fit the context.",
+        'Assembles a picture of a business problem from scattered, informal signals.',
+        'Mentors juniors and coordinates people outside the immediate team without a mandate.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -228,6 +293,17 @@ export const LEVEL_REQUIREMENTS = {
   9: {
     jobCode: 'Senior Consultant',
     jobCodeNote: 'Focus beyond own assignment',
+    summary:
+      'Drives strategic direction on high-stakes assignments, acts as gatekeeper for contract agreements, and builds cross-functional and industry networks that spark innovation.',
+    hamel: {
+      band: 'Creativity, emerging passion',
+      gist: "Creative problem-solving is the expectation; the level adds strategic reframing and a visible drive to grow the organization's capability.",
+      examples: [
+        'Reframes a high-stakes problem so a materially better solution becomes possible.',
+        'Sets a standard or approach that other teams adopt.',
+        'Actively develops others through structured coaching, not just answers on demand.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -286,6 +362,17 @@ export const LEVEL_REQUIREMENTS = {
   10: {
     jobCode: 'Manager',
     jobCodeNote: 'First time accountable for delivery',
+    summary:
+      'First level accountable for delivery — runs day-to-day operations and short-term strategy for a team, or serves as a deep individual expert anticipating roadblocks.',
+    hamel: {
+      band: 'Passion & zeal, directed at a team',
+      gist: 'Everything below is assumed; the level is about generating commitment — making a strategy something a team believes in and delivers.',
+      examples: [
+        'Translates a BU or function strategy into steps the team actually buys into.',
+        "Invests in team members' growth and performance, not just their output.",
+        'Champions best practice across the function and holds the quality bar during change.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',
@@ -347,6 +434,17 @@ export const LEVEL_REQUIREMENTS = {
   11: {
     jobCode: 'Director',
     jobCodeNote: 'Setting direction',
+    summary:
+      'Sets direction for a team or professional discipline, shaping strategy, driving cross-team alignment, and operating with full autonomy.',
+    hamel: {
+      band: 'Passion & zeal, at direction-setting scale',
+      gist: 'The level is defined by conviction and credibility — setting a direction others choose to follow, inside CGI and in the market.',
+      examples: [
+        'Sets a direction for a team or discipline that people rally behind.',
+        'Wins peers and senior leaders to a new practice through credibility, not authority.',
+        'Builds a team environment people want to be part of and drives innovation through it.',
+      ],
+    },
     dimensions: [
       {
         name: 'Level of impact',

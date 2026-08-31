@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { requirementsForLevel } from '../store.js'
+import { requirementsForLevel, HAMEL_INTRO } from '../store.js'
 
 const props = defineProps({
   level: { type: [Number, String], default: '' },
@@ -41,6 +41,22 @@ function isSub(item) {
           </div>
           <button class="lri-panel__close" title="Close" @click="open = false">&times;</button>
         </div>
+
+        <p v-if="req && req.summary" class="lri-panel__summary">{{ req.summary }}</p>
+
+        <section v-if="req && req.hamel" class="lri-hamel">
+          <h3 class="lri-dim__name">Hamel's hierarchy of contribution</h3>
+          <p class="lri-hamel__intro">{{ HAMEL_INTRO }}</p>
+          <p class="lri-hamel__band">
+            <span class="lri-hamel__band-label">Where this level is won</span>
+            {{ req.hamel.band }}
+          </p>
+          <p class="lri-hamel__gist">{{ req.hamel.gist }}</p>
+          <p class="lri-hamel__examples-label">Behaviours that show it</p>
+          <ul class="lri-dim__list">
+            <li v-for="(ex, i) in req.hamel.examples" :key="i">{{ ex }}</li>
+          </ul>
+        </section>
 
         <template v-if="req">
           <section v-for="dim in req.dimensions" :key="dim.name" class="lri-dim">
@@ -158,10 +174,71 @@ function isSub(item) {
   background: var(--cgi-red);
 }
 
+.lri-panel__summary {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 3px solid var(--cgi-purple);
+  background: color-mix(in srgb, var(--cgi-purple) 8%, var(--cgi-white));
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--cgi-purple-dark);
+}
+
 .lri-panel__empty {
   margin: 0;
   color: var(--cgi-grey-dark);
   font-size: 0.9rem;
+}
+
+.lri-hamel {
+  margin-bottom: 1.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--cgi-grey-light);
+  border-radius: 8px;
+  background: var(--cgi-grey-pale);
+}
+
+.lri-hamel__intro {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--cgi-grey);
+  line-height: 1.45;
+}
+
+.lri-hamel__band {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cgi-black);
+}
+
+.lri-hamel__band-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cgi-purple);
+  margin-bottom: 0.1rem;
+}
+
+.lri-hamel__gist {
+  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--cgi-black);
+}
+
+.lri-hamel__examples-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cgi-purple);
 }
 
 .lri-dim {

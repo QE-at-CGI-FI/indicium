@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { store, isCriterionHidden, minSalaryForLevel } from '../store.js'
+import LevelRequirementInfo from './LevelRequirementInfo.vue'
 
 const props = defineProps({
   person: { type: Object, required: true },
@@ -43,6 +44,7 @@ const visibleCriteria = computed(() =>
           maxlength="2"
           v-model="person.level"
         />
+        <LevelRequirementInfo v-if="person.level" :level="person.level" />
       </div>
     </div>
 
@@ -108,7 +110,7 @@ const visibleCriteria = computed(() =>
 
 .profile__level {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.4rem;
   flex: 0 0 auto;
 }

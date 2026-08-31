@@ -1,5 +1,6 @@
 <script setup>
 import { store, setLevelSalary } from '../store.js'
+import LevelRequirementInfo from './LevelRequirementInfo.vue'
 
 const emit = defineEmits(['close'])
 </script>
@@ -13,11 +14,13 @@ const emit = defineEmits(['close'])
       </div>
       <p class="panel__hint">
         Set a minimum salary for each level. A person's profile shows the figure for
-        their current level.
+        their current level. The <span class="panel__hint-i">i</span> icon opens the
+        career-level requirement (levels 4–11).
       </p>
       <ul class="levels-list">
         <li v-for="entry in store.levels" :key="entry.level">
           <span class="levels-list__level">{{ entry.level }}</span>
+          <LevelRequirementInfo :level="entry.level" />
           <input
             class="levels-list__input"
             type="text"
@@ -70,6 +73,21 @@ const emit = defineEmits(['close'])
   color: var(--cgi-grey);
   font-size: 0.85rem;
   margin: 0 0 1rem;
+}
+
+.panel__hint-i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--cgi-purple);
+  border-radius: 50%;
+  color: var(--cgi-purple);
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.7rem;
+  line-height: 1;
 }
 
 .levels-list {
